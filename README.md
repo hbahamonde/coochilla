@@ -30,6 +30,15 @@ do not belong in this repository.
 Run `python3 tools/refresh_spotify.py` to check the public counts and
 `python3 tools/validate_site.py` to validate the generated files.
 
+## Live photography
+
+The four supplied concert photographs appear near the top of the dossier.
+Select a thumbnail, use the arrow buttons or keyboard arrows, or swipe on a
+touchscreen. Opening a photo displays a full-size viewer with a download link;
+Escape closes it. Portrait and landscape images are shown without cropping.
+The gallery has no automatic rotation. Original JPEGs are in `site/assets/`,
+and `site/gallery.js` controls the viewer. Image links also work without JavaScript.
+
 ## Technical rider
 
 The production section includes the audience-view stage plot and a six-feed

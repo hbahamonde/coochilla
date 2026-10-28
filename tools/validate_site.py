@@ -11,7 +11,7 @@ for key in ['listeners','followers']:
 fallback=(site/'spotify-public-data.js').read_text().removeprefix('window.COOCHILLA_PUBLIC = ').strip().removesuffix(';')
 assert json.loads(fallback)==data
 html=(site/'index.html').read_text()
-for filename in ['content.js','metrics-data.js','spotify-public-data.js','metrics.js']:
+for filename in ['content.js','metrics-data.js','spotify-public-data.js','metrics.js','gallery.js']:
     assert filename in html and (site/filename).is_file()
 assert 'setInterval' not in (site/'metrics.js').read_text()
 assert not any(site.rglob('*.py'))
