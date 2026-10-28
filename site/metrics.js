@@ -10,19 +10,25 @@
     if(!/^\d{4}-\d{2}-\d{2}$/.test(data.verifiedOn)||Number.isNaN(Date.parse(data.verifiedOn)))throw new Error('Invalid verification date');
     return data;
   }
+  function showStatus(message){
+    for(const element of document.querySelectorAll('#metrics-status,[data-spotify-status]')){
+      element.textContent=message;element.hidden=!message;
+    }
+  }
   let current=null;
   function show(data){
     validate(data);
     if(current&&data.verifiedOn<current.verifiedOn)throw new Error('Older capture');
     current=data;
     get('audience-value').textContent=number(data.metrics.listeners);
+    for(const element of document.querySelectorAll('[data-spotify-listeners]'))element.textContent=number(data.metrics.listeners);
     get('audience-label').textContent='Monthly listeners on Spotify';
     get('audience-note').textContent='Source: Spotify artist profile';
     get('metric-followers').textContent=number(data.metrics.followers);
     get('metrics-updated').textContent='Checked '+date(data.verifiedOn)+' · Refreshed weekly';
+    for(const element of document.querySelectorAll('[data-spotify-updated]'))element.textContent='Checked '+date(data.verifiedOn)+' · Refreshed weekly';
     const stale=(Date.now()-Date.parse(data.verifiedOn+'T00:00:00Z'))>10*86400000;
-    get('metrics-status').textContent=stale?'Latest available figures · a newer update is pending.':'';
-    get('metrics-status').hidden=!stale;
+    showStatus(stale?'Latest available figures · a newer update is pending.':'');
   }
   const snapshot=window.COOCHILLA_METRICS;
   if(snapshot?.artistId==='2KMHj8v88gQE6fQZNMp9Qc'){
@@ -44,5 +50,5 @@
   if(window.COOCHILLA_PUBLIC){try{show(window.COOCHILLA_PUBLIC);}catch(e){get('audience-value').textContent='—';}}
   if(location.protocol!=='file:')fetch('spotify-public.json',{cache:'no-cache'})
     .then(r=>{if(!r.ok)throw new Error('Feed unavailable');return r.json();}).then(show)
-    .catch(()=>{get('metrics-status').textContent=current?'Showing the last checked Spotify figures.':'Spotify figures are temporarily unavailable.';get('metrics-status').hidden=false;});
+    .catch(()=>showStatus(current?'Showing the last checked Spotify figures.':'Spotify figures are temporarily unavailable.'));
 })();

@@ -30,6 +30,13 @@ do not belong in this repository.
 Run `python3 tools/refresh_spotify.py` to check the public counts and
 `python3 tools/validate_site.py` to validate the generated files.
 
+## Music
+
+The Music section embeds Spotify's artist player for Coochilla. Its monthly
+listener count uses the same validated weekly cloud feed as the artist overview,
+including the check date and stale-data notice. No extra polling is introduced.
+Direct artist and release links remain available alongside the player.
+
 ## Live photography
 
 The four supplied concert photographs appear near the top of the dossier.
