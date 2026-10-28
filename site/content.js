@@ -5,9 +5,9 @@ window.COOCHILLA = {
   tagline: 'Loud guitars. Tight grooves. A psychedelic edge.',
   bio: 'Coochilla is an alternative rock band from Turku, Finland. Loud guitars, a tight groove and a touch of psychedelia shape a sound built for the stage.',
   bookingEmail: 'bahamondeh@gmail.com',
-  tour: { label: 'European booking enquiries', month: 'June 2027', availability: 'Germany / Poland / Czech Republic · Dates by arrangement' },
+  tour: { label: 'European booking enquiries', month: 'June 2027', availability: 'Dates by arrangement' },
   performance: { lineup: '5 musicians: two guitars/backing vocals, lead vocal, bass and drums', setLength: '', bookingFormat: '', backline: 'Guitars and bass via DI / IR. PA-only setup supported; house cabinets optional by advance.' },
-  audience: { summary: 'Thousands of Spotify listeners', markets: 'Our largest share of fans is in Germany, Poland and the Czech Republic.' },
+  audience: { summary: 'Thousands of Spotify listeners' },
   links: {
     spotify: 'https://open.spotify.com/artist/2KMHj8v88gQE6fQZNMp9Qc',
     release: 'https://open.spotify.com/album/0mKlZ1t1p9mJScZsjGKVNN',
