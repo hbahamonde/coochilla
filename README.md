@@ -48,13 +48,17 @@ and `site/gallery.js` controls the viewer. Image links also work without JavaScr
 
 ## Technical rider
 
-The production section includes the audience-view stage plot and a six-feed
-band input list, with drum inputs added to suit the agreed kit. Both guitarists
-sing backing vocals; lead vocals are central, with bass back-left and drums
-back-right. Both guitars and bass use DI/IR routing, with PA-only operation
-and optional house cabinets by advance.
+The promotional landing page shows download links only. Stage plots, patch
+lists, microphone requirements and routing belong in the downloadable PDF.
+The two-page technical rider includes the audience-view stage plot and both
+instrument modes. IR mode uses three mono instrument feeds (one per guitar
+and bass). Amp mode uses three cabinet mics plus a separate bass IR feed,
+for four instrument channels. Both modes have three vocals and a basic
+six-mic drum package: kick, snare top, rack tom, floor tom and two overheads.
 
-PDF downloads and the SVG plot are in `site/assets/`. Rebuild them with
-`python3 tools/build_rider.py` in an environment with ReportLab installed.
-Set length, exact instrument outputs, drum/backline supply, monitor allocation
-and cabinet amplification are agreed with each venue.
+The suggested patch reserves channel 4 for the additional bass IR in amp mode:
+12 active inputs in IR mode, 13 in amp mode. Drum configuration and any extra
+toms are confirmed in advance. Technical PDFs and the supporting SVG are in
+`site/assets/`. Rebuild with `python3 tools/build_rider.py` using ReportLab.
+After rebuilding, update the PDF version queries in `site/content.js` and the
+landing-page download links, then update the content.js hash in index.html.
