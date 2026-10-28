@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 site=Path(__file__).resolve().parents[1]/'site'
@@ -14,4 +15,6 @@ for filename in ['content.js','metrics-data.js','spotify-public-data.js','metric
     assert filename in html and (site/filename).is_file()
 assert 'setInterval' not in (site/'metrics.js').read_text()
 assert not any(site.rglob('*.py'))
+for asset in re.findall(r'assets/[A-Za-z0-9_.-]+', html+(site/'content.js').read_text()):
+    assert (site/asset).is_file(), 'Missing production asset: '+asset
 print('Site validated: correct artist, matching data files, no minute polling.')

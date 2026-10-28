@@ -29,3 +29,16 @@ do not belong in this repository.
 
 Run `python3 tools/refresh_spotify.py` to check the public counts and
 `python3 tools/validate_site.py` to validate the generated files.
+
+## Technical rider
+
+The production section includes the audience-view stage plot and a six-feed
+band input list, with drum inputs added to suit the agreed kit. Both guitarists
+sing backing vocals; lead vocals are central, with bass back-left and drums
+back-right. Both guitars and bass use DI/IR routing, with PA-only operation
+and optional house cabinets by advance.
+
+PDF downloads and the SVG plot are in `site/assets/`. Rebuild them with
+`python3 tools/build_rider.py` in an environment with ReportLab installed.
+Set length, exact instrument outputs, drum/backline supply, monitor allocation
+and cabinet amplification are agreed with each venue.
