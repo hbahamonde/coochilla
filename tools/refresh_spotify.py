@@ -69,8 +69,11 @@ def main():
     else:
         response = subprocess.run(['curl', '--fail', '--silent', '--show-error', '--location',
             '--proto', '=https', '--max-time', '45', '--header', 'Accept-Language: en',
-            '--user-agent', 'CoochillaBookingWebsite/1.0', URL],
-            capture_output=True, timeout=55, check=True)
+            '--retry', '2', '--retry-delay', '5', '--retry-max-time', '30',
+            '--user-agent', 'Mozilla/5.0 (compatible; CoochillaBookingWebsite/1.0)', URL],
+            capture_output=True, timeout=100, check=False)
+        if response.returncode:
+            raise RuntimeError('Spotify public request failed: ' + response.stderr.decode('utf-8', errors='replace').strip())
         if len(response.stdout) > 5_000_000:
             raise ValueError('Unexpectedly large Spotify response')
         html = response.stdout.decode('utf-8')
